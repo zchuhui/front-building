@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "gulp": "gulp",
-    "gulp-watch":"gulp watch",
+    "gulp-watch": "gulp watch",
+    "babel": "babel src/scripts -d build/src/scripts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,11 +20,17 @@
   },
   "homepage": "https://github.com/zchuhui/front-building#readme",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.1",
+    "babel-plugin-transform-object-assign": "^6.22.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
     "eslint": "^4.16.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.1.0",
     "gulp-clean-css": "^3.9.2",
-    "gulp-less": "^3.4.0"
+    "gulp-less": "^3.4.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   }
 }

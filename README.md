@@ -82,3 +82,35 @@ npm run gulp
 # 执行监视，改动则自动构建
 npm run gulp-watch
 ```
+
+## [babel](https://babeljs.cn/) 的使用
+
+`gulp` 是构建工具，针对于全局的编译，如`less`、`sass`等等。而`babel`是针对于 `js` 的，如使用`es6`,`es7`等。
+
+当然，在`gulp`里面也可以添加`babel`进行使用。
+
+### 1.安装
+
+```bash
+npm install --save-dev babel-cli babel-preset-env
+```
+
+### 2.使用
+
+在根目录添加`.babelrc `文件：
+
+```bash
+{
+  "presets": ["env"]
+}
+```
+
+在`package.js`添加执行命令：
+
+```bash
+# 编译 babel src/scripts 到 build/src/scripts 里面
+"babel": "babel src/scripts -d build/src/scripts",
+```
+
+这个时候，就可以在`src/scripts`里面写任何es6/es7语法，然后执行 `npm run babel` 即可编译到`build/src/scripts`里面
+
