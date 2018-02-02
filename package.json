@@ -1,0 +1,29 @@
+{
+  "name": "front-buiding",
+  "version": "1.0.0",
+  "description": "front-end building",
+  "main": "index.js",
+  "scripts": {
+    "gulp": "gulp",
+    "gulp-watch":"gulp watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zchuhui/front-building.git"
+  },
+  "author": "zchuhui",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zchuhui/front-building/issues"
+  },
+  "homepage": "https://github.com/zchuhui/front-building#readme",
+  "devDependencies": {
+    "babel-eslint": "^8.2.1",
+    "eslint": "^4.16.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-clean-css": "^3.9.2",
+    "gulp-less": "^3.4.0"
+  }
+}

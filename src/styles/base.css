@@ -1,0 +1,15 @@
+.box {
+  color: #fe33ac;
+  border-color: #fdcdea;
+}
+.box div {
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+.content {
+  width: 500px;
+  margin: 100px auto;
+  transform: inherit;
+  background: #f938ab;
+  border: 1px solid #f938ab;
+}
