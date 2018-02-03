@@ -83,7 +83,7 @@ npm run gulp
 npm run gulp-watch
 ```
 
-## [babel](https://babeljs.cn/) 的使用
+## [babel](https://babeljs.cn/) 使用
 
 `gulp` 是构建工具，针对于全局的编译，如`less`、`sass`等等。而`babel`是针对于 `js` 的，如使用`es6`,`es7`等。
 
@@ -113,4 +113,97 @@ npm install --save-dev babel-cli babel-preset-env
 ```
 
 这个时候，就可以在`src/scripts`里面写任何es6/es7语法，然后执行 `npm run babel` 即可编译到`build/src/scripts`里面
+
+## [webpack](https://doc.webpack-china.org/), 打包工具使用
+
+前面介绍的`gulp`跟`babel`两种工具，一种是自动化流程的构建，一种是 js 解析器。那么现在的 webpack ，就是最后一步，把整个开发文件打包使用的工具。
+
+虽然gulp构建后也可以打包，不过gulp是比较落后的工具，地位不断被 grunt 侵蚀，而webpack不一样，它基本处于统治地位。
+
+下面是webpack的使用步骤：
+
+### 1.安装
+
+```bash
+npm i --save-dev webpack
+```
+
+并在 package.json 添加执行命令：
+
+```bash
+  "scripts": {
+    "webpack": "webpack",
+  },
+```
+
+### 2.配置
+
+在根目录添加 webpack.config.js 文件：
+
+```bash
+const path = require('path');
+const webpack = require('webpack');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");    // 独立输出，这里用于独立输出css
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');           // 简洁打包，只打包用到的代码
+
+// 用于独立导出css
+const extractLess = new ExtractTextPlugin({
+  filename: "../styles/[name].css",
+  disable: process.env.NODE_ENV === "development"
+});
+
+module.exports = {
+  // 入口
+  entry: {
+    index: './src/scripts/index.js',
+    vendor:['react','react-dom']        // 打包公共的库，然后独立引用
+  },
+  // 输出
+  output: {
+    path: path.resolve(__dirname, 'build/scripts'),
+    filename: '[name].js'
+  },
+  module: {
+    rules: [
+      {
+        // js 模块
+        test: /\.js$/,
+        include: [
+          path.resolve(__dirname, 'src/scripts')
+        ],
+        loader: 'babel-loader'
+      },
+      {
+        // css 模块
+        test: /\.less$/,
+        use: extractLess.extract({
+          use: [{
+            loader: "css-loader"
+          }, {
+            loader: "less-loader"
+          }],
+          // use style-loader in development
+          fallback: "style-loader"
+        })
+      }
+    ]
+  },
+  plugins: [
+      extractLess,                                   // 输出css文件
+      new webpack.optimize.CommonsChunkPlugin({      // 独立打包体量比较大的公共库，比如jquery/react等，不用每次都打包到文件，runtime是webpack产生的方法
+        name: ["vendor","runtime"],
+      }),
+      new UglifyJSPlugin(),                          // 精简打包
+  ],
+}
+
+```
+
+### 3.使用
+
+```bash
+npm run webpack
+```
+
+这时候，即可看到打包输出的文件，这时候在页面引用即可。
 

@@ -1,11 +1,14 @@
-
 import React,{Component} from "react"
 import ReactDOM from 'react-dom'
+import { f1 } from './util'
+
+import '../styles/base.less'
 
 class Demo extends Component{
   render(){
+    f1()
     return(
-      <div>
+      <div className="box">
         {
           this.props.test
         }

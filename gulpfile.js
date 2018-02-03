@@ -24,13 +24,13 @@ gulp.task('less',()=>{
 
 // 执行任务less
 gulp.task('default',['clean', 'less'],()=>{
-  console.log("done!");
+  console.info("done!");
 });
 
 // watch监视，改动则自动执行构建
 gulp.task('watch',()=>{
   var watcher = gulp.watch('src/**/*', ['default']);
   watcher.on('change', (event)=>{
-    console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+    console.info('File ' + event.path + ' was ' + event.type + ', running tasks...');
   });
 })

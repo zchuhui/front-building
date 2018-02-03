@@ -7,6 +7,7 @@
     "gulp": "gulp",
     "gulp-watch": "gulp watch",
     "babel": "babel src/scripts -d build/src/scripts",
+    "webpack": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,15 +23,23 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.1",
+    "babel-loader": "^7.1.2",
     "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.9",
     "eslint": "^4.16.0",
+    "extract-text-webpack-plugin": "^3.0.2",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.1.0",
     "gulp-clean-css": "^3.9.2",
     "gulp-less": "^3.4.0",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "style-loader": "^0.20.1",
+    "uglifyjs-webpack-plugin": "^1.1.8",
+    "webpack": "^3.10.0"
   }
 }
